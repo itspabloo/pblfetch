@@ -30,7 +30,9 @@ int32_t main() {
     std::cout << MAIN_COLOR << BOLD << "Shell: " << DEFAULT << data.shell() << '\n';
     PrintArt(readFile);
     std::cout << MAIN_COLOR << BOLD << "Terminal: " << DEFAULT << data.terminal() << '\n';
+    std::cout << " ";
     std::cout << MAIN_COLOR << BOLD << "CPU: " << DEFAULT << data.cpu() << '\n';
+    std::cout << " ";
     std::cout << MAIN_COLOR << BOLD << "Memory: " << DEFAULT << data.meminfo() << '\n';
     return 0;
 }
