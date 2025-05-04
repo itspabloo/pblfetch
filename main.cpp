@@ -11,7 +11,9 @@ void PrintArt(std::ifstream &in) {
 
 int32_t main() {
     SysInfo data;
-    std::ifstream readFile("art.txt");
+    const char* HOME = std::getenv("HOME");
+    const std::string homedir(HOME);
+    std::ifstream readFile(homedir + "/.config/pblfetch/art.txt");
     std::cout << "\n";
     PrintArt(readFile);
     std::cout << MAIN_COLOR << BOLD << data.username() << DEFAULT << BOLD <<
