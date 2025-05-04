@@ -101,7 +101,7 @@ std::string GetUptime() {
         int64_t minutes = seconds / 60;
         seconds %= 60;
         int64_t hours = minutes / 60;
-        minutes /= 60;
+        minutes %= 60;
         int64_t days = hours / 24;
         hours %= 24;
         std::string result = "";
