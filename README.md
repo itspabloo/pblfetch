@@ -8,4 +8,4 @@ cp art.txt ~/.config/pblfetch
 g++ main.cpp -o main
 cp main /usr/local/bin/pblfetch
 pblfetch
-``
+```
