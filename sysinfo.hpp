@@ -1,7 +1,7 @@
 #include <fstream>
-#include <string>
 #include <cstdint>
 #include <unistd.h>
+#include "consts.hpp"
 
 std::string GetUsername();
 std::string GetHostname();
@@ -79,7 +79,7 @@ private:
 
 std::string GetUsername() {
     const char* USERNAME = std::getenv("USER");
-    if (!USERNAME) return "Unknown";
+    if (!USERNAME) return UNKNOWN;
     return std::string(USERNAME);
 }
 
@@ -88,7 +88,7 @@ std::string GetHostname() {
     if (!gethostname(HOSTNAME, sizeof(HOSTNAME))) {
         return std::string(HOSTNAME);
     } else {
-        return std::string(HOSTNAME);
+        return UNKNOWN;
     }
 }
 
@@ -111,7 +111,7 @@ std::string GetUptime() {
         if (result.empty()) result += std::to_string(seconds) + " seconds";
         return result;
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -131,10 +131,10 @@ std::string GetOsName() {
         if (!result.empty()) {
             return result;
         } else {
-            return "Unknown";
+            return UNKNOWN;
         }
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -147,7 +147,7 @@ std::string GetKernelVersion() {
         readFile >> helper; // result
         return helper;
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -162,7 +162,7 @@ std::string GetShell() {
             return fullPath;
         }
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -176,7 +176,7 @@ std::string GetTerminal() {
             return fullName;
         }
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -185,7 +185,7 @@ std::string GetDesktop() {
     if (DESKTOP) {
         return std::string(DESKTOP);
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -206,10 +206,10 @@ std::string GetCPU() {
         if (!result.empty()) {
             return result;
         } else {
-            return "Unknown";
+            return UNKNOWN;
         }
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
 
@@ -228,7 +228,7 @@ std::string GetMemory() {
             }
         }
         if (total == -1 || available == -1) {
-            return "Unknown";
+            return UNKNOWN;
         }
         int64_t used = total - available;
         result = std::to_string(used / 1024 / 1024) + "," +
@@ -239,6 +239,6 @@ std::string GetMemory() {
                  static_cast<double>(total) / 1024 / 10.24) % 100) + " GiB";
         return result;
     } else {
-        return "Unknown";
+        return UNKNOWN;
     }
 }
