@@ -14,10 +14,19 @@ mkdir -p ~/.config/pblfetch
 cp art.txt ~/.config/pblfetch
 ```
 ```shell
-g++ main.cpp -o main
+mkdir build
 ```
 ```shell
-sudo cp main /usr/local/bin/pblfetch
+cd build
+```
+```shell
+cmake ..
+```
+```shell
+make
+```
+```shell
+make install
 ```
 ```shell
 pblfetch
