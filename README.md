@@ -26,7 +26,7 @@ cmake ..
 make
 ```
 ```shell
-make install
+sudo make install
 ```
 ```shell
 pblfetch
